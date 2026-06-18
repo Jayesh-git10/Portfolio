@@ -1,12 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Github, Linkedin, Globe } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Jayesh Sharma — Developer Portfolio" },
-      { name: "description", content: "CS student at IIIT Ranchi. Full-stack developer building AI tools, dashboards, and creative web apps." },
+      { name: "description", content: "Undergrad at IIIT Ranchi. Full-stack developer building AI tools, dashboards, and creative web apps." },
       { property: "og:title", content: "Jayesh Sharma — Developer Portfolio" },
-      { property: "og:description", content: "CS student at IIIT Ranchi. Full-stack developer building AI tools, dashboards, and creative web apps." },
+      { property: "og:description", content: "Undergrad at IIIT Ranchi. Full-stack developer building AI tools, dashboards, and creative web apps." },
     ],
   }),
   component: Portfolio,
@@ -22,6 +23,7 @@ type Project = {
   description: string;
   tech: string[];
   url: string;
+  live?: string;
   highlight?: boolean;
 };
 
@@ -141,7 +143,7 @@ function Hero() {
           <span className="blink text-primary">_</span>
         </h1>
         <p className="mt-8 max-w-xl text-lg leading-relaxed text-muted-foreground">
-          CS undergrad at <span className="text-foreground">IIIT Ranchi</span>. I build full-stack web apps,
+          Undergrad at <span className="text-foreground">IIIT Ranchi</span>. I build full-stack web apps,
           AI tools and the occasional weird experiment. Currently obsessed with shipping fast
           and writing code that doesn't rot.
         </p>
@@ -158,14 +160,16 @@ function Hero() {
             target="_blank" rel="noreferrer"
             className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-5 py-3 text-foreground transition-colors hover:border-primary hover:text-primary"
           >
-            github ↗
+            <Github size={16} />
+            github
           </a>
           <a
             href={LINKEDIN}
             target="_blank" rel="noreferrer"
             className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-5 py-3 text-foreground transition-colors hover:border-primary hover:text-primary"
           >
-            linkedin ↗
+            <Linkedin size={16} />
+            linkedin
           </a>
         </div>
       </div>
@@ -223,16 +227,16 @@ function About() {
       </div>
       <div className="space-y-5 text-lg leading-relaxed text-muted-foreground">
         <p>
-          I'm a Computer Science undergrad at the <span className="text-foreground">Indian Institute of Information Technology, Ranchi</span>.
+          I'm an undergrad at the <span className="text-foreground">Indian Institute of Information Technology, Ranchi</span>.
           My playground is the web — I love spinning up products end-to-end, from the database
           schema to the last pixel of the landing page.
         </p>
         <p>
-          Lately I've been shipping AI-augmented tools (
-          <a className="text-primary hover:underline" href="https://github.com/Jayesh-git10/Sommaire-AI---PDF-SUMMARISER" target="_blank" rel="noreferrer">PDF summarisers</a>,
-          {" "}<a className="text-primary hover:underline" href="https://github.com/Jayesh-git10/SentraFlow" target="_blank" rel="noreferrer">feedback engines</a>),
-          DX tools like <a className="text-primary hover:underline" href="https://github.com/Jayesh-git10/README-Architect" target="_blank" rel="noreferrer">README-Architect</a>,
-          and exploring computer vision in Python. When I'm not coding, I'm probably refactoring something that already worked.
+          Currently building <a className="text-primary hover:underline" href="https://github.com/Jayesh-git10/SentraFlow" target="_blank" rel="noreferrer">SentraFlow</a>,
+          an AI feedback generator. I've also shipped AI-augmented tools like
+          <a className="text-primary hover:underline" href="https://github.com/Jayesh-git10/Sommaire-AI---PDF-SUMMARISER" target="_blank" rel="noreferrer"> PDF summarisers</a>,
+          and DX tools like <a className="text-primary hover:underline" href="https://github.com/Jayesh-git10/README-Architect" target="_blank" rel="noreferrer">README-Architect</a>.
+          When I'm not coding, I'm probably refactoring something that already worked.
         </p>
       </div>
     </section>
@@ -257,17 +261,19 @@ function Projects() {
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((p) => (
-          <a
+          <div
             key={p.name}
-            href={p.url}
-            target="_blank" rel="noreferrer"
             className={`group relative flex flex-col gap-4 rounded-2xl border border-border bg-card p-6 transition-all hover:-translate-y-1 hover:border-primary ${
               p.highlight ? "lg:col-span-1" : ""
             }`}
           >
             <div className="flex items-start justify-between">
               <div className="font-mono text-xs text-muted-foreground">_project</div>
-              <span className="font-mono text-xs text-muted-foreground transition-colors group-hover:text-primary">↗</span>
+              {p.highlight && (
+                <span className="rounded-full bg-primary px-2 py-0.5 font-mono text-[10px] font-semibold text-primary-foreground">
+                  ★ featured
+                </span>
+              )}
             </div>
             <h3 className="font-display text-2xl font-semibold leading-tight tracking-tight">
               {p.name}
@@ -280,12 +286,27 @@ function Projects() {
                 </span>
               ))}
             </div>
-            {p.highlight && (
-              <span className="absolute -right-2 -top-2 rounded-full bg-primary px-2 py-0.5 font-mono text-[10px] font-semibold text-primary-foreground">
-                ★ featured
-              </span>
-            )}
-          </a>
+            <div className="mt-2 flex gap-2">
+              {p.live && (
+                <a
+                  href={p.live}
+                  target="_blank" rel="noreferrer"
+                  className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-lg border border-border bg-background/50 px-3 py-2 font-mono text-xs text-foreground transition-colors hover:border-primary hover:text-primary"
+                >
+                  <Globe size={13} />
+                  Live Demo
+                </a>
+              )}
+              <a
+                href={p.url}
+                target="_blank" rel="noreferrer"
+                className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-lg border border-border bg-background/50 px-3 py-2 font-mono text-xs text-foreground transition-colors hover:border-primary hover:text-primary"
+              >
+                <Github size={13} />
+                GitHub
+              </a>
+            </div>
+          </div>
         ))}
       </div>
     </section>
