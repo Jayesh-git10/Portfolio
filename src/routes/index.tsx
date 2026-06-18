@@ -33,6 +33,7 @@ const projects: Project[] = [
     description: "Visual README builder with live markdown preview, drag-and-drop sections, Mermaid diagrams and one-click export.",
     tech: ["TypeScript", "React", "Markdown"],
     url: "https://github.com/Jayesh-git10/README-Architect",
+    live : "https://readme-architect-05.vercel.app/",
     highlight: true,
   },
   {
@@ -40,6 +41,7 @@ const projects: Project[] = [
     description: "AI-powered PDF summariser that turns long documents into digestible briefs in seconds.",
     tech: ["TypeScript", "AI", "Next.js"],
     url: "https://github.com/Jayesh-git10/Sommaire-AI---PDF-SUMMARISER",
+    live : "https://sommaire-ai-pdf-summariser.vercel.app",
     highlight: true,
   },
   {
@@ -53,30 +55,20 @@ const projects: Project[] = [
     description: "A polished TypeScript web app — third iteration of the Celestio experiment.",
     tech: ["TypeScript", "React"],
     url: "https://github.com/Jayesh-git10/Celestio3.0",
-  },
-  {
-    name: "Secure API Gateway",
-    description: "Hardened API gateway with auth, rate-limiting and request validation baked in.",
-    tech: ["JavaScript", "Node", "Security"],
-    url: "https://github.com/Jayesh-git10/Secure-API-Gateway",
+    live : "https://celestio3-0.vercel.app/"
   },
   {
     name: "Blogify",
     description: "Full-stack blogging platform with authentication, posts and comments.",
     tech: ["JavaScript", "Express", "MongoDB"],
     url: "https://github.com/Jayesh-git10/Blogify-",
+    live: "https://blogify-beta-orpin.vercel.app/"
   },
   {
     name: "Face Recognition",
     description: "Python face detection & recognition pipeline using OpenCV.",
     tech: ["Python", "OpenCV"],
     url: "https://github.com/Jayesh-git10/face_recognition",
-  },
-  {
-    name: "Live Stream Overlay",
-    description: "Python toolkit to render dynamic overlays onto live video streams.",
-    tech: ["Python"],
-    url: "https://github.com/Jayesh-git10/Live-stream-overlay",
   },
 ];
 
